@@ -2495,11 +2495,16 @@ footer .links a:hover::before {
 
 @media (max-width:600px) {
   .price .container .card{
-    width: 350px; 
+    width: 340px; 
    }
+   .card .pop-up__card div:first-of-type {
+    margin-top: 38px;
+}
+
+
    .card input {
     background-color: var(--p-color);
-    padding: 10px 10px 11px 33px;
+    padding: 8px 10px 7px 33px;
     width: 100%;
     height: 7%;
     margin-top: 6px;
