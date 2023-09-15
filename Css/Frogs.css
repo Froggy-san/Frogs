@@ -554,7 +554,7 @@ background-color: transparent;
 .container .titles h2::after {
   content: "";
   position: absolute;
-  width: 30%;
+  width: 44%;
   height: 1%;
   background-color: white;
   bottom: -30px;
@@ -629,25 +629,6 @@ background-color: transparent;
   grid-row-gap: 60px;
 }
 
-@media (max-width: 767px) {
-  .services .container .all-srv {
-    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  }
-
-  .container .titles p {
-    width: 330px;
-    margin-top: 15%;
-  }
-
-  .services .container .all-srv .col .srv {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .services .container .all-srv .col .srv i {
-    flex-basis: 100px !important;
-  }
-}
 
 .services .container .all-srv .col .srv {
   display: flex;
@@ -802,7 +783,8 @@ background-color: transparent;
 
 @media (max-width: 767px) {
   .porto .container .slide li {
-    font-size: 19px;
+    font-size: 18px;
+    padding: 6px;
   }
 }
 
@@ -816,11 +798,11 @@ background-color: transparent;
 /*******************************************************/
 
 .galary {
+  position: relative;
   margin-top: 9%;
   display: flex;
   flex-wrap: wrap;
   box-shadow: 0px 0px 50px 3px var(--color-bright);
-  position: relative;
 }
 
 .galary .box {
@@ -870,6 +852,7 @@ background-color: transparent;
 @media (max-width: 767px) {
   .porto .galary {
     margin-top: 18%;
+    height: 570px;
   }
 
   .galary .box {
@@ -2042,12 +2025,10 @@ border-radius: .4rem;
 }
 
 .contact .sub {
-  height: fit-content;
+  position: relative;
+
   /* height: 54px; */
   border: 3px solid var(--main-color);
-
-  display: flex;
-  position: relative;
   border-radius: 2px;
 
 }
@@ -2085,14 +2066,16 @@ border-radius: .4rem;
 }
 
 .contact .sub input[type="submit"] {
+  position: absolute;
   width: 100px;
+  height: 100%;
   padding: 5px;
   font-size: 25px;
   background-color: var(--main-color);
   color: blanchedalmond;
   border: none;
-  position: relative;
-  left: 5px;
+ right: -4px ;
+ top: 0;
   margin-right: 4px;
   border-radius: 2px;
   cursor: pointer;
@@ -2112,7 +2095,7 @@ border-radius: .4rem;
 
 
   .contact .sub input[type="email"] {
-    width: 250px;
+    width: 309px;
   }
 }
 
@@ -2540,4 +2523,29 @@ footer p {
 
 footer p span {
   color: var(--main-color);
+}
+
+
+
+@media (max-width: 767px) {
+  .services .container .all-srv {
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  }
+
+  .container .titles p {
+    width: 309px;
+    margin-top: 15%;
+  }
+
+  .services .container .all-srv .col .srv {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .services .container .all-srv .col .srv i {
+    flex-basis: 100px !important;
+  }
+  .skills .titles{
+    width: 300px;
+  }
 }
