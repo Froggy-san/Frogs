@@ -170,3 +170,63 @@ priceContaine.addEventListener("click", function (e) {
 //   card.classList.add("hidden");
 //   fade.classList.add("hidden");
 // });
+
+/**
+  f you want to make an element appear on Chrome but remove it on other browsers, you may need to use some browser-specific CSS selectors or JavaScript code to target the element and hide it or show it accordingly. For example, you can use the following CSS code to hide an element with the class name “my-element” on all browsers except Chrome:
+
+// .my-element { display: none; /* hide the element by default }*/
+
+// /* use a Chrome-specific selector to show the element only on Chrome / @media screen and (-webkit-min-device-pixel-ratio:0) { .my-element { display: block; / show the element on Chrome */ } }
+
+// Alternatively, you can use the following JavaScript code to detect the browser name and hide or show the element based on that:
+
+// get the browser name var browserName = navigator.userAgent.toLowerCase();
+
+// get the element by its class name var myElement = document.getElementsByClassName (“my-element”) [0];
+
+// if the browser is not Chrome, hide the element if (browserName.indexOf (“chrome”) == -1) { myElement.style.display = “none”; }
+/*
+You can find more information about browser detection and browser-specific selectors in these web search results123. I hope this helps you with your problem. If you have any other questions, feel free to ask me. 😊
+ */
+
+const btns = document.querySelector(".btn--buy");
+const ele = window.getComputedStyle(btns, ":after");
+// console.log(ele.backgroundColor);
+// ele.display = "none";
+const browserName = navigator.userAgent.toLowerCase();
+const ligts = document.querySelectorAll(".light");
+console.log(navigator.userAgent);
+console.log(browserName.indexOf("chrome"));
+
+// function myFunction() {
+//   if (
+//     (navigator.userAgent.indexOf("Opera") ||
+//       navigator.userAgent.indexOf("OPR")) != -1
+//   ) {
+//     alert("Opera");
+//   } else if (navigator.userAgent.indexOf("Edg") != -1) {
+//     alert("Edge");
+//   } else if (navigator.userAgent.indexOf("Chrome") != -1) {
+//     alert("Chrome");
+//   } else if (navigator.userAgent.indexOf("Safari") != -1) {
+//     alert("Safari");
+//   } else if (navigator.userAgent.indexOf("Firefox") != -1) {
+//     alert("Firefox");
+//   } else if (
+//     navigator.userAgent.indexOf("MSIE") != -1 ||
+//     !!document.documentMode == true
+//   ) {
+//     //IF IE > 10
+//     alert("IE");
+//   } else {
+//     alert("unknown");
+//   }
+// }
+// myFunction();
+
+if (browserName.indexOf("firefox") !== -1) {
+  console.log(true);
+  ligts.forEach((el) => (el.style.display = "none"));
+}
+/*
+console.log(navigator.userAgent.toLowerCase());*/
