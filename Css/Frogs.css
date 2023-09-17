@@ -644,12 +644,12 @@ background-color: transparent;
   padding: 10px;
   transition: 0.5s;
 }
-
+/* 
 .services .container .all-srv .col .srv:hover {
   transform: scale(1.1);
 
   box-shadow: 0px 0px 26px 1px black;
-}
+} */
 
 .services .container .all-srv .col .srv i {
   flex-basis: 178px;
@@ -764,6 +764,9 @@ background-color: transparent;
 /*************************************/
 .porto {
   position: relative;
+}
+.porto .container {
+  margin-top: 30%;
 }
 
 .porto .titles p::after {
@@ -959,7 +962,7 @@ background-color: transparent;
 
 @media (max-width: 767px) {
   .video {
-    margin-top: 45%;
+    margin-top: 67%;
   }
 }
 
@@ -1067,11 +1070,17 @@ background-color: transparent;
 
 /************************************** THE ABOUT US SECTION*******************************/
 
+.about  .container{
+  margin-top: 20%;
+}
 .about .container .titles p::after {
   bottom: -2px;
 }
 
 @media (max-width: 767px) {
+  .about  .container{
+    margin-top: 30%;
+  }
   .about .container .titles p::after {
     bottom: -2px;
   }
@@ -1482,9 +1491,6 @@ border-top-left-radius: 5px;
   position: relative;
 }
 
-.skills .light {
-  /* top: -53px; */
-}
 
 
 @media (max-width: 767px) {
@@ -1497,6 +1503,10 @@ border-top-left-radius: 5px;
    .skills .container{
     margin-top: 8%;
   }
+  
+.skills .light {
+  margin-top: 250px;
+}
 }
 
 
@@ -1585,7 +1595,8 @@ border-top-left-radius: 5px;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 20%;
+  margin-bottom: 20%;
   box-shadow: 0px 0px 164px 7px var(--color-bright);
 }
 
@@ -2131,7 +2142,10 @@ border-radius: .4rem;
 }
 
 /*****************************************************/
-
+.Contat-us{
+  margin-top: 7%;
+  margin-bottom: 30%;
+}
 .Contat-us .container .c-1 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
@@ -2590,6 +2604,9 @@ footer p span {
 
 @-moz-document url-prefix() {
   /* Firefox styles go here */
+  .services{
+    margin-top: 20%;
+  }
   .brackets a::after  {
     display: none;
   }
