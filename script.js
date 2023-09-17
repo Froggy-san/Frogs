@@ -54,19 +54,41 @@ btnComments.addEventListener("click", function (e) {
 // sliderContainer.addEventListener("onscroll", function () {
 //   nextSlide();
 // });
+const landing = document.querySelector(".landing");
 const sliders = document.querySelectorAll(".landing img");
 const btnLeft = document.querySelector(".fa-chevron-left");
 const btnRight = document.querySelector(".fa-chevron-right");
 let curSlide = 0;
 const maxSlide = sliders.length;
 const dotsContainer = document.querySelector(".dots");
+let autoSlide, timeOutTostart;
 
 const waitFiveSecondAndthenStart = function () {
-  setInterval(function () {
+  const auto = setInterval(() => {
     nextSlide();
   }, 5000);
+  return auto;
+};
+const checkToStopSlideOrMoveIT = function () {
+  if (autoSlide) clearInterval(autoSlide);
+
+  return setTimeout(() => {
+    autoSlide = waitFiveSecondAndthenStart();
+  }, 10000);
 };
 // next slide
+
+// const autoSlideFun = function () {
+//   if (autoSlide) clearInterval(autoSlide);
+
+//   const startCount = setTimeout(() => {
+//       autoSlide = waitFiveSecondAndthenStart();
+//   }, 10000);
+//   timeOutTostart = startCount;
+
+//   if (timeOutTostart) clearTimeout(timeOutTostart);
+//   timeOutTostart = startCount;
+// };
 
 const CreateDots = function () {
   sliders.forEach((_, i) => {
@@ -87,15 +109,6 @@ const activeDot = function (slide) {
     .classList.add("dot--active");
 };
 
-dotsContainer.addEventListener("click", function (e) {
-  if (e.target.classList.contains("dot")) {
-    const slideNow = e.target.dataset.slide;
-
-    goToNextSlide(slideNow);
-    activeDot(slideNow);
-  }
-});
-
 const goToNextSlide = function (slide) {
   sliders.forEach((el, i) => {
     el.style.transform = `translateX(${100 * (i - slide)}%)`;
@@ -106,7 +119,7 @@ const starting = function () {
   CreateDots();
   activeDot(0);
   goToNextSlide(0);
-  waitFiveSecondAndthenStart();
+  autoSlide = waitFiveSecondAndthenStart();
 };
 
 starting();
@@ -130,9 +143,43 @@ const prevSlide = function () {
   goToNextSlide(curSlide);
   activeDot(curSlide);
 };
+landing.addEventListener("click", function (e) {
+  if (e.target.classList.contains("fa-chevron-right")) {
+    nextSlide();
 
-btnRight.addEventListener("click", nextSlide);
-btnLeft.addEventListener("click", prevSlide);
+    if (timeOutTostart) clearTimeout(timeOutTostart);
+    timeOutTostart = checkToStopSlideOrMoveIT();
+  }
+  if (e.target.classList.contains("fa-chevron-left")) {
+    prevSlide();
+
+    if (timeOutTostart) clearTimeout(timeOutTostart);
+    timeOutTostart = checkToStopSlideOrMoveIT();
+  }
+  if (e.target.classList.contains("dot")) {
+    const slideNow = e.target.dataset.slide;
+    goToNextSlide(slideNow);
+    activeDot(slideNow);
+
+    if (timeOutTostart) clearTimeout(timeOutTostart);
+    timeOutTostart = checkToStopSlideOrMoveIT();
+  }
+});
+
+// ------------ we replaced the code below by adding event delegation to the landing element
+
+// btnRight.addEventListener("click", nextSlide);
+// btnLeft.addEventListener("click", prevSlide);
+// dotsContainer.addEventListener("click", function (e) {
+//   if (e.target.classList.contains("dot")) {
+//     const slideNow = e.target.dataset.slide;
+
+//     goToNextSlide(slideNow);
+//     activeDot(slideNow);
+//   }
+// });
+
+///
 document.addEventListener("keydown", function (e) {
   if (e.key === "ArrowRight") {
     nextSlide();
@@ -143,6 +190,239 @@ document.addEventListener("keydown", function (e) {
     fade.classList.add("hidden");
   }
 });
+
+//             -------------------------- bing {once:ture} i think  you should llook it up //
+/*
+You’re welcome. I think you have done a great job with your code. You have used the clearTimeout() function correctly and efficiently. You have also followed the best practices of JavaScript coding, such as using descriptive variable names, comments, and data attributes. Your code is well-structured and easy to read.
+
+Some possible areas for improvement are:
+
+You could use a ternary operator instead of an if-else statement for simple conditions, such as in the nextSlide() and prevSlide() functions. This would make your code more concise and elegant. For example:
+const nextSlide = () => {
+  curSlide === maxSlide - 1 ? (curSlide = 0) : curSlide++;
+  goToNextSlide(curSlide);
+  activeDot(curSlide);
+};
+
+You could use the addEventListener() method with the option {once: true} to run a function only once after a certain event, such as in the checkToStopSlideOrMoveIT() function. This would make your code more reliable and avoid creating multiple timeouts or intervals. For example:
+const checkToStopSlideOrMoveIT = () => {
+  if (autoSlide) clearInterval(autoSlide);
+
+  landing.addEventListener(
+    "click",
+    () => {
+      autoSlide = waitFiveSecondAndthenStart();
+    },
+    { once: true }
+  );
+};
+
+You could use a switch statement instead of multiple if statements for checking the class of the target element in the landing click event listener. This would make your code more organized and readable. For example:
+landing.addEventListener("click", (e) => {
+  switch (true) {
+    case e.target.classList.contains("fa-chevron-right"):
+      nextSlide();
+      break;
+    case e.target.classList.contains("fa-chevron-left"):
+      prevSlide();
+      break;
+    case e.target.classList.contains("dot"):
+      const slideNow = e.target.dataset.slide;
+      goToNextSlide(slideNow);
+      activeDot(slideNow);
+      break;
+    default:
+      return;
+  }
+  if (timeOutTostart) clearTimeout(timeOutTostart);
+  timeOutTostart = checkToStopSlideOrMoveIT();
+});
+
+I hope these suggestions help you improve your code further. If you have any questions or need any help with your code, please let me know. 😊
+
+5
+of
+30
+
+
+
+
+
+
+i think this is very interesting, but i haven't learned about it , can you tell me more about it and how to use it, start easy at first please, am not that good at coding , const checkToStopSlideOrMoveIT = () => {
+  if (autoSlide) clearInterval(autoSlide);
+
+  landing.addEventListener(
+    "click",
+    () => {
+      autoSlide = waitFiveSecondAndthenStart();
+    },
+    { once: true }
+  );
+};
+Searching for: addEventListener once option
+
+Searching for: addEventListener once option
+
+Generating answers for you…
+
+Generating answers for you…
+
+Sure, I’m happy to tell you more about the once option and how to use it. The once option is a way to make an event listener run only once after being added. This means that the listener will be automatically removed after it is invoked for the first time. This can be useful when you want to perform a one-time action in response to an event, such as showing a message, playing a sound, or starting a timer.
+
+To use the once option, you need to pass an object as the third argument to the addEventListener method. The object should have a property called once with a value of true. For example:
+
+// Add a click listener that runs only once
+element.addEventListener('click', function() {
+  // Do something
+}, { once: true });
+
+In your code, you are using the once option to add a click listener to the landing element. This listener will call the waitFiveSecondAndthenStart function, which returns a new interval for autoSlide. This means that after the user clicks on the landing element, the slides will start changing automatically every five seconds. However, this will only happen once, because the listener will be removed after the first click. This is a clever way to avoid creating multiple intervals or timeouts that could interfere with each other.
+
+I hope this explanation helps you understand how to use the once option and why it is useful. If you have any questions or need any help with your code, please let me know. 😊
+
+Learn more:
+1. developer.mozilla.org
+2. stackoverflow.com
+3. educative.io
+4. dev.to
+6
+of
+30
+do you mean if i clicked once again on the element, it won't do anything?
+Generating answers for you…
+
+Generating answers for you…
+
+Yes, that’s correct. If you clicked once again on the element, it won’t do anything. The once option makes the listener run only once and then removes it. So, the next time you click on the element, there will be no listener to handle the click event. This is different from a regular listener that stays attached to the element and runs every time the event occurs.
+
+7
+of
+30
+can you use the {once:true} on my code, so i can understand it better?
+Generating answers for you…
+
+Generating answers for you…
+
+Sure, I can use the {once: true} option on your code, so you can understand it better. Here is the modified code with the once option added:
+
+const landing = document.querySelector(".landing");
+const sliders = document.querySelectorAll(".landing img");
+const btnLeft = document.querySelector(".fa-chevron-left");
+const btnRight = document.querySelector(".fa-chevron-right");
+let curSlide = 0;
+const maxSlide = sliders.length;
+const dotsContainer = document.querySelector(".dots");
+let autoSlide, timeOutTostart;
+
+const waitFiveSecondAndthenStart = () => {
+  const auto = setInterval(() => {
+    nextSlide();
+  }, 5000);
+  return auto;
+};
+const checkToStopSlideOrMoveIT = () => {
+  if (autoSlide) clearInterval(autoSlide);
+
+  landing.addEventListener(
+    "click",
+    () => {
+      autoSlide = waitFiveSecondAndthenStart();
+    },
+    { once: true }
+  );
+};
+// next slide
+
+// const autoSlideFun = function () {
+//   if (autoSlide) clearInterval(autoSlide);
+
+//   const startCount = setTimeout(() => {
+//       autoSlide = waitFiveSecondAndthenStart();
+//   }, 10000);
+//   timeOutTostart = startCount;
+
+//   if (timeOutTostart) clearTimeout(timeOutTostart);
+//   timeOutTostart = startCount;
+// };
+
+const CreateDots = () => {
+  sliders.forEach((_, i) => {
+    dotsContainer.insertAdjacentHTML(
+      "beforeend",
+      ` <button class ="dot dot--active" data-slide="${i}"></button>`
+    );
+  });
+};
+
+const activeDot = (slide) => {
+  document
+    .querySelectorAll(".dot")
+    .forEach((el) => el.classList.remove("dot--active"));
+
+  document
+    .querySelector(`.dot[data-slide="${slide}"]`)
+    .classList.add("dot--active");
+};
+
+const goToNextSlide = (slide) => {
+  sliders.forEach((el, i) => {
+    el.style.transform = `translateX(${100 * (i - slide)}%)`;
+  });
+};
+
+const starting = () => {
+  CreateDots();
+  activeDot(0);
+  goToNextSlide(0);
+  autoSlide = waitFiveSecondAndthenStart();
+};
+
+starting();
+
+const nextSlide = () => {
+  if (curSlide === maxSlide - 1) {
+    curSlide = 0;
+  } else {
+    curSlide++;
+  }
+  goToNextSlide(curSlide);
+  activeDot(curSlide);
+};
+
+const prevSlide = () => {
+  if (curSlide === 0) {
+    curSlide = maxSlide - 1;
+  } else {
+    curSlide--;
+  }
+  goToNextSlide(curSlide);
+  activeDot(curSlide);
+};
+landing.addEventListener("click", (e) => {
+  switch (true) {
+    case e.target.classList.contains("fa-chevron-right"):
+      nextSlide();
+      break;
+    case e.target.classList.contains("fa-chevron-left"):
+      prevSlide();
+      break;
+    case e.target.classList.contains("dot"):
+      const slideNow = e.target.dataset.slide;
+      goToNextSlide(slideNow);
+      activeDot(slideNow);
+      break;
+    default:
+      return;
+  }
+  
+});
+
+I have added the once option to the checkToStopSlideOrMoveIT function, which adds a click listener to the landing element. This listener will run only once and then be removed. This means that the slides will start changing automatically only after the first click on the landing element. If you click on the landing element again, nothing will happen.
+
+I hope this code helps you understand how to use the once option better. If you have any questions or need any help with your code, please let me know. 😊
+*/
+
 // btnRight.addEventListener("click", nextSlide);
 
 // pop-up

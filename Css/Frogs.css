@@ -522,8 +522,16 @@ background-color: transparent;
   position: relative;
 }
 
-.light {
+.services .light {
   width: 50px;
+  height: 50px;
+  background-color: navajowhite;
+  top: -93px;
+  left: 47%;
+  margin: 262px auto 1px auto;
+  transform: perspective(5em) rotateX(71deg) scale(1) translateX(-1%);
+  filter: blur(36px); 
+  /* width: 50px;
   height: 50px;
   position: absolute;
   background-color: navajowhite;
@@ -532,14 +540,14 @@ background-color: transparent;
   transform: translateX(-50%) rotateX(65deg);
   filter: blur(49px);
   transform: perspective(5em) rotateX(71deg) scale(1) translateX(1%);
-  filter: blur(36px);
+  filter: blur(36px); */
 }
 
 
 
 .container .titles {
   text-align: center;
-  margin-top: 30%;
+  margin-top: 3.5%;
 }
 
 .container .titles h2 {
@@ -852,7 +860,7 @@ background-color: transparent;
 @media (max-width: 767px) {
   .porto .galary {
     margin-top: 18%;
-    height: 570px;
+  
   }
 
   .galary .box {
@@ -1118,7 +1126,7 @@ background-color: transparent;
 .live-feed {
   text-align: center;
   padding-top: 70px;
-  padding-bottom: 70px;
+  /* padding-bottom: 70px; */
   padding-right: 40px;
   padding-left: 40px;
   background-color: var(--second-color);
@@ -1208,10 +1216,19 @@ background-color: transparent;
 /***************** skils **************************/
 
 .skills {
-  padding-top: 50px;
+  padding-top: 18px;
   padding-bottom: 50px;
 }
-
+.skills .light{
+  width: 50px;
+  height: 50px;
+  background-color: navajowhite;
+  top: -93px;
+  left: 47%;
+  margin: 0px auto 1px auto;
+  transform: perspective(5em) rotateX(71deg) scale(1) translateX(-1%);
+  filter: blur(36px); 
+}
 .skills .titles {
   width: 350px;
   margin: auto;
@@ -1223,6 +1240,7 @@ background-color: transparent;
 }
 
 .skills .container {
+  margin-top: 4%;
   display: flex;
   flex-wrap: wrap;
 }
@@ -1465,13 +1483,19 @@ border-top-left-radius: 5px;
 }
 
 .skills .light {
-  top: -53px;
+  /* top: -53px; */
 }
 
 
 @media (max-width: 767px) {
-  .light {
-    left: 43%;
+  .services .titles{
+    margin-top: 7.5%;
+  }
+  .services .light{
+    margin-top: 7.5%;
+  }
+   .skills .container{
+    margin-top: 8%;
   }
 }
 
