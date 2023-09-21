@@ -563,7 +563,7 @@ background-color: transparent;
   content: "";
   position: absolute;
   width: 44%;
-  height: 1%;
+  height: .1px;
   background-color: white;
   bottom: -30px;
   left: 50%;
@@ -1505,7 +1505,7 @@ border-top-left-radius: 5px;
   }
   
 .skills .light {
-  margin-top: 250px;
+  margin-top: 114px;
 }
 }
 
@@ -1588,7 +1588,8 @@ border-top-left-radius: 5px;
 }
 
 .skills .banner {
-  background-image: url("../images/wp9974953.webp");
+  background: linear-gradient(238deg,rgba(0, 0, 0, 0.481),rgba(0, 0, 0, 0.481)), url("../images/wp9974953.webp") center top;
+  /* background-image: url("../images/wp9974953.webp"); */
   height: 600px;
   background-size: cover;
   display: flex;
@@ -2355,7 +2356,8 @@ textarea::placeholder {
 footer {
   text-align: center;
   margin-top: 5%;
- background-image: url("../images/wp9974953.webp");
+  background: linear-gradient(238deg,rgba(0, 0, 0, 0.481),rgba(0, 0, 0, 0.481)) ,url("../images/wp9974953.webp") top center ;
+ /* background-image: url("../images/wp9974953.webp"); */
  /* background: linear-gradient(to bottom, rgba(13,89,75,0.800) 0%, rgba(13,89,75,0.298) 33.000001%, rgba(15,15,15,1.000) 100%); */
   background-size: cover;
   padding-top: 300px;
@@ -2367,7 +2369,7 @@ footer {
 
 
 
-footer::after {
+/* footer::after {
   content: "";
   position: absolute;
   width: 100%;
@@ -2375,7 +2377,7 @@ footer::after {
   background-color: #00000082;
   top: 0;
   left: 0;
-}
+} */
 
 footer .p-1 {
   position: absolute;
@@ -2578,6 +2580,9 @@ footer p span {
 
 
 @media (max-width: 767px) {
+  .search-bar {
+    right: 1rem !important;
+  }
   .services .container .all-srv {
     grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
   }
@@ -2598,6 +2603,42 @@ footer p span {
   .skills .titles{
     width: 300px;
   }
+}
+
+
+.rotate{
+  transform: rotateX(90deg);
+}
+
+.search-bar{
+  position: fixed;
+  top: 6rem;
+  right: 8rem;
+  z-index: 5;
+  transition: .2s;
+}
+
+.search-bar button{
+  position: absolute;
+  right: 0.6rem;
+  top: 45%;
+  transform: translateY(-50%);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+
+.search-bar input{
+  padding: 4px 4px 4px 10px;
+  background: linear-gradient(99deg,var(--main-color) , #6a192d);
+  border: none;
+  outline: none;
+  border-radius: 4px;
+ 
+}
+.search-bar input::placeholder{
+  color: var(--second-color);
 }
 
 

@@ -510,3 +510,29 @@ if (browserName.indexOf("firefox") !== -1) {
 }
 /*
 console.log(navigator.userAgent.toLowerCase());*/
+
+// search bar
+// const bars = document.querySelector(".bars");
+// const navBar = document.querySelector(".nav-bar");
+const search = document.querySelector(".fa-magnifying-glass");
+const searchBarDiv = document.querySelector(".search-bar");
+const searchBar = document.querySelector(".search-bar input");
+const removeSearchText = document.querySelector(".search-bar button");
+console.log(searchBar);
+search.addEventListener("click", () => {
+  searchBarDiv.classList.toggle("rotate");
+});
+removeSearchText.addEventListener("click", () => {
+  if (searchBar.value !== "") {
+    searchBar.value = "";
+  }
+});
+// bars.addEventListener("click", () => {
+//   navBar.classList.toggle("hidden-2");
+// });
+
+// if (window.innerWidth <= 1099) {
+//   navBar.classList.remove("hidden-2");
+// }else{
+//   navBar.classList.add("hidden-2")
+// }
