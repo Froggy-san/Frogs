@@ -132,6 +132,7 @@ ul {
   .container {
     width: 970px;
   }
+ 
 }
 
 @media (min-width: 1200px) {
@@ -410,16 +411,20 @@ overflow: hidden;
 
 .layout {
   position: absolute;
+  z-index: 1;
   height: 100%;
   width: 100%;
   background-color: #00000038;
 }
-
+.landing * :not(.layout) {
+  z-index: 2;
+}
 .contant {
   color: coral;
   width: 50%;
   background-color: #380b16d4;
   position: absolute;
+  z-index: 2;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
@@ -467,6 +472,7 @@ overflow: hidden;
   /*transform: translateY(-50%);*/
   padding-right: 10px;
   transition: 0.3s;
+  z-index: 2;
 }
 
 .landing i:nth-of-type(2) {
@@ -477,6 +483,7 @@ overflow: hidden;
   font-size: 33px;
   padding-left: 10px;
   transition: 0.3s;
+  z-index: 2;
 }
 
 .landing>i:first-of-type:hover {
@@ -497,6 +504,7 @@ overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 
@@ -563,7 +571,7 @@ background-color: transparent;
   content: "";
   position: absolute;
   width: 44%;
-  height: .1px;
+  height: 1px;
   background-color: white;
   bottom: -30px;
   left: 50%;
@@ -608,6 +616,7 @@ background-color: transparent;
 }
 
 @media (max-width: 1100px) {
+  
   .container .titles p::after {
     bottom: -1.8px;
   }
@@ -2344,7 +2353,11 @@ textarea::placeholder {
     padding-left: 0;
   }
 }
-
+@media  (max-width:1400px) {
+  .search-bar{
+    right: 4rem !important;
+  }
+}
 /*@media (max-width:750px) {
   .Contat-us .container .adress ul {
     margin-top: 30px;
