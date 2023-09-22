@@ -2620,12 +2620,14 @@ footer p span {
 
 
 .rotate{
-  transform: rotateX(90deg);
+  transform: perspective(30rem) rotateX(90deg);
 }
 
 .search-bar{
   position: fixed;
+  border-radius: 4px;
   top: 6rem;
+  box-shadow: rgba(0, 0, 0, 0.497) 5px 5px 10px, rgba(0, 0, 0, 0.185) 10px 10px 10px;
   right: 8rem;
   z-index: 5;
   transition: .2s;
