@@ -13,6 +13,21 @@ console.log(divComment);
 console.log(comments);
 console.log(input);
 console.log(btnComments);
+let commentss = [];
+
+function postComments() {
+  // console.log(localStorage.getItem("comments"));
+  const storedComments = localStorage.getItem("storedComments");
+  if (!storedComments) return;
+  commentss = JSON.parse(storedComments);
+  console.log(commentss);
+  console.log(storedComments);
+  commentss.forEach((el) => {
+    const html = el;
+    divComment.insertAdjacentHTML("beforebegin", html);
+  });
+}
+postComments();
 
 btnComments.addEventListener("click", function (e) {
   e.preventDefault();
@@ -45,6 +60,9 @@ btnComments.addEventListener("click", function (e) {
     // comments.scrollBy(scroll.top);
     console.log(input.value);
     input.value = "";
+
+    commentss.push(html);
+    localStorage.setItem("storedComments", JSON.stringify(commentss));
   }
 });
 
