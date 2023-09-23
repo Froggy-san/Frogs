@@ -177,6 +177,7 @@ header .container {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100%;
 }
 
 .main .logo a img {
@@ -295,6 +296,10 @@ header .container {
   flex-wrap: nowrap;
   width: 100%;
 }
+.main .fix-2{
+  display: flex;
+  align-items: center ;
+}
 
 /* not working */
 
@@ -341,6 +346,7 @@ header .container {
   align-items: center;
   justify-content: center;
   width: 40px;
+  padding-right: 12px;
 }
 
 .bars:hover .nav-bar {
