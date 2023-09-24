@@ -535,10 +535,15 @@ console.log(navigator.userAgent.toLowerCase());*/
 const search = document.querySelector(".fa-magnifying-glass");
 const searchBarDiv = document.querySelector(".search-bar");
 const searchBar = document.querySelector(".search-bar input");
-const removeSearchText = document.querySelector(".search-bar button");
+const removeSearchText = document.querySelector(".search-bar span");
 console.log(searchBar);
 search.addEventListener("click", () => {
   searchBarDiv.classList.toggle("rotate");
+  if (!searchBarDiv.classList.contains("rotate")) {
+    searchBar.focus();
+  } else if (searchBarDiv.classList.contains("rotate")) {
+    searchBar.blur();
+  }
 });
 removeSearchText.addEventListener("click", () => {
   if (searchBar.value !== "") {
@@ -554,3 +559,70 @@ removeSearchText.addEventListener("click", () => {
 // }else{
 //   navBar.classList.add("hidden-2")
 // }
+
+//                ---------------------------------   ///
+const allHeaders = document.querySelectorAll(".container h2");
+const errorMessage = searchBarDiv.querySelector("p");
+console.log(errorMessage);
+const removeError = function () {
+  return setTimeout(() => {
+    errorMessage.classList.add("hidden");
+  }, 4000);
+};
+let errTime;
+console.log(allHeaders);
+
+// searchBarDiv.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   allHeaders.find((el) => {
+//     if (
+//       el.innerText.trim() === searchBar.value.trim() ||
+//       el.innerText.toLowerCase().trim() === searchBar.value.toLowerCase().trim()
+//     ) {
+//       console.log(true);
+//     } else {
+//       console.log(false);
+//     }
+//   });
+// });
+
+searchBarDiv.addEventListener("submit", function (e) {
+  e.preventDefault();
+  const el = Array.from(allHeaders).find((el) => {
+    return (
+      el.innerText.trim() === searchBar.value.trim() ||
+      el.innerText.toLowerCase().trim() === searchBar.value.toLowerCase().trim()
+    );
+  });
+  if (el) {
+    console.log(true);
+    // el.closest(".container").scrollIntoView({ behavior: "smooth" });
+    const parent = el.closest(".container").getBoundingClientRect();
+    console.log(parent);
+    //scrolling
+    window.scrollTo(
+      parent.left + window.pageXOffset,
+      parent.top + window.pageYOffset - 180
+    );
+    searchBar.value = "";
+    searchBarDiv.classList.add("rotate");
+  } else {
+    errorMessage.classList.remove("hidden");
+
+    if (errTime) clearTimeout(errTime);
+    errTime = removeError();
+    // console.log(false);
+  }
+});
+
+// searchBarDiv.addEventListener("submit", function (e) {
+//   e.preventDefault();
+//   const all = document.querySelectorAll(".container");
+//   console.log(all);
+//   all.forEach((el) => {
+//     let h2 = el.querySelector("h2");
+//     if (h2 && searchBar.value === h2.innerText) {
+//       console.log(true);
+//     }
+//   });
+// });
