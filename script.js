@@ -14,9 +14,17 @@ console.log(comments);
 console.log(input);
 console.log(btnComments);
 let commentss = [];
+function scrollAllTheWay() {
+  comments.scrollTo({
+    left: 0,
+    top: comments.scrollHeight,
+    behavior: "smooth",
+  });
+}
 
 function postComments() {
   // console.log(localStorage.getItem("comments"));
+  scrollAllTheWay();
   const storedComments = localStorage.getItem("storedComments");
   if (!storedComments) return;
   commentss = JSON.parse(storedComments);
@@ -25,6 +33,7 @@ function postComments() {
   commentss.forEach((el) => {
     const html = el;
     divComment.insertAdjacentHTML("beforebegin", html);
+    scrollAllTheWay();
   });
 }
 postComments();
@@ -56,7 +65,7 @@ btnComments.addEventListener("click", function (e) {
     // div.scrollIntoView({ behavior: "smooth" });// not working as expected
     // console.log(scroll);
     // window.scrollBy(scroll);
-    comments.scrollTo({ left: 0, top: comments.scrollHeight });
+    scrollAllTheWay();
     // comments.scrollBy(scroll.top);
     console.log(input.value);
     input.value = "";
