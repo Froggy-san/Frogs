@@ -143,14 +143,16 @@ ul {
 
 /* END OF GOLBAL VALUES */
 header {
-  position: fixed;
+ transition: all 1s;
   width: 100%;
   z-index: 11;
   background-color: #380b16d5;
   /* border-bottom: white 0.1px solid;*/
   /*box-shadow: 0px 1px 28px 4px var(--main-color);*/
 }
-
+.fixed{
+  position: fixed;
+}
 .main {
   display: flex;
   justify-content: space-between;
@@ -337,7 +339,13 @@ header .container {
   border-bottom: 1px solid white;
   transition: 0.3s;
 }
-
+.selected {
+  transform: translatex(5px);
+  color: white;
+  z-index: 3;
+  border-bottom: 1px solid white;
+  transition: 0.3s;
+}
 .main .nav-bar ul li:hover a {}
 
 .bars {

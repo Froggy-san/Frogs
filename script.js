@@ -626,3 +626,68 @@ searchBarDiv.addEventListener("submit", function (e) {
 //     }
 //   });
 // });
+
+// implementing section obsorver
+const header = document.querySelector("header");
+const allLinks = document.querySelectorAll(".nav-bar ul li");
+console.log(allLinks);
+const services = document.querySelector(".services-link");
+const portfolio = document.querySelector(".portflio");
+const home = document.querySelector(".home");
+const about = document.querySelector(".nav-bar ul .about");
+const pricing = document.querySelector(".nav-bar ul .pricing");
+const contact = document.querySelector(".nav-bar ul .contact-us");
+console.log(about, pricing, contact);
+const allSections = document.querySelectorAll(".observe");
+console.log(allSections);
+const hoverSection = function (entries) {
+  const [entry] = entries;
+  // console.log(entry);
+
+  if (entry.target.classList.contains("landing")) {
+    home.classList.add("selected");
+    header.classList.remove("fixed");
+  } else {
+    home.classList.remove("selected");
+    header.classList.add("fixed");
+  }
+
+  if (entry.target.classList.contains("section-1")) {
+    services.classList.add("selected");
+  } else {
+    services.classList.remove("selected");
+  }
+
+  if (entry.target.classList.contains("section-2")) {
+    portfolio.classList.add("selected");
+  } else {
+    portfolio.classList.remove("selected");
+  }
+
+  if (entry.target.classList.contains("section-3")) {
+    about.classList.add("selected");
+  } else {
+    about.classList.remove("selected");
+  }
+
+  if (entry.target.classList.contains("section-4")) {
+    pricing.classList.add("selected");
+  } else {
+    pricing.classList.remove("selected");
+  }
+
+  if (entry.target.classList.contains("section-5")) {
+    contact.classList.add("selected");
+  } else {
+    contact.classList.remove("selected");
+  }
+};
+
+const sectionObserver = new IntersectionObserver(hoverSection, {
+  root: null,
+  threshold: 0.5,
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+});
