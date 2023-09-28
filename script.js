@@ -700,3 +700,11 @@ const sectionObserver = new IntersectionObserver(hoverSection, {
 allSections.forEach(function (section) {
   sectionObserver.observe(section);
 });
+
+// adding the currnet year to the copy right
+
+const currentYearContainer = document.querySelector(".current-year");
+
+const currentYear = new Date().getFullYear();
+
+currentYearContainer.innerText = currentYear;
