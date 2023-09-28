@@ -376,7 +376,7 @@ header .container {
 
 /*#########################################################################################################*/
 .landing {
-  height: calc(100vh - 87px);
+  height: calc(100vh - 86.5px);
 overflow: hidden;
   background-color: red;
   background-size: cover;
