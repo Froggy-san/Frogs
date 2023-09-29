@@ -101,7 +101,7 @@ const checkToStopSlideOrMoveIT = function () {
 
   return setTimeout(() => {
     autoSlide = waitFiveSecondAndthenStart();
-  }, 10000);
+  }, 5000);
 };
 // next slide
 
@@ -636,8 +636,26 @@ searchBarDiv.addEventListener("submit", function (e) {
 //   });
 // });
 
-// implementing section obsorver
+// Adding sticky nav
+
 const header = document.querySelector("header");
+
+const stickyNav = function (entries) {
+  const [entry] = entries;
+  console.log(entry, "HERE!");
+
+  if (!entry.isIntersecting) header.classList.add("fixed");
+  else header.classList.remove("fixed");
+};
+
+const headerObserver = new IntersectionObserver(stickyNav, {
+  root: null, // mmsh 3arf
+  threshold: 0, // kam fel % men el target bayn fel shasha
+  // rootMargin: `-${navHight}px`, // abl el threshold b -90px e3mel call ll function
+});
+headerObserver.observe(landing);
+// implementing section obsorver
+
 const allLinks = document.querySelectorAll(".nav-bar ul li");
 console.log(allLinks);
 const services = document.querySelector(".services-link");
@@ -655,10 +673,10 @@ const hoverSection = function (entries) {
 
   if (entry.target.classList.contains("landing")) {
     home.classList.add("selected");
-    header.classList.remove("fixed");
+    // header.classList.remove("fixed");
   } else {
     home.classList.remove("selected");
-    header.classList.add("fixed");
+    // header.classList.add("fixed");
   }
 
   if (entry.target.classList.contains("section-1")) {

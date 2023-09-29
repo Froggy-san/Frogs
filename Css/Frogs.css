@@ -2706,7 +2706,39 @@ footer p  span:not(.current-year)  {
   color: var(--second-color);
 }
 
+@media screen and ( height: 400px ) { 
+  .landing .contant{
+    padding: 20px;
+  }
+  .landing .contant .text .text-1{
+    font-size: 16px;
+  }
+}
 
+@media screen and ( max-height: 700px ) {
+  .landing .contant{
+    padding: 10px;
+    justify-content: start;
+  }
+  .landing .contant .text{
+    margin-left: 40px;
+  }
+  .landing .contant .text .text-1{
+    font-size: 20px;
+  }
+  .landing .contant .text p{
+    font-size: 13px;
+  }
+ }
+
+ /* @media screen and (max-height: 995px) {
+  .landing .contant{
+    padding: 20px;
+  }
+  .landing .contant .text .text-1{
+    font-size: 16px;
+  }
+} */
 
 @-moz-document url-prefix() {
   /* Firefox styles go here */
