@@ -279,6 +279,7 @@ header .container {
     visibility: hidden;
     opacity: 0;
     transition: 0.5s;
+    z-index: 40;
   }
 
   #fix:hover .nav-bar {
