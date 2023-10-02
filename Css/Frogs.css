@@ -2251,7 +2251,9 @@ border-radius: .4rem;
   padding: 30px
 }
 
-
+.Contat-us .container .c-1 .mail  > input , textarea {
+  outline: none;
+}
 .Contat-us .container .c-1 .mail a {
   /*display: block;*/
   position: relative;

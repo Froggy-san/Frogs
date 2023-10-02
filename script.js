@@ -615,6 +615,7 @@ searchBarDiv.addEventListener("submit", function (e) {
     );
     searchBar.value = "";
     searchBarDiv.classList.add("rotate");
+    searchBar.blur();
   } else {
     errorMessage.classList.remove("hidden");
 
